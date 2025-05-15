@@ -1,0 +1,56 @@
+# Build folders
+/build/
+/cmake-build-debug/
+/cmake-build-release/
+/out/
+
+# CLion project files
+/.idea/
+/.idea/*
+
+# CMake generated files
+CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/Makefile
+
+# vcpkg installed packages (geralmente a pasta local)
+# Ajuste se usar uma pasta diferente para vcpkg
+/vcpkg_installed/
+/vcpkg/buildtrees/
+/vcpkg/packages/
+/vcpkg/downloads/
+/vcpkg/installed/
+
+# Executáveis e objetos
+*.exe
+*.out
+*.o
+*.obj
+*.so
+*.dll
+*.dylib
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Git ignore for user-specific files
+*.user
+*.user.*
+*.suo
+*.ncb
+*.sdf
+*.opensdf
+*.VC.db
+
+# Backup files
+*~
+*.bak
+*.orig
