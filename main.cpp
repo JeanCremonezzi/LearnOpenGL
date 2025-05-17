@@ -37,11 +37,13 @@ int main() {
         0.0f, -0.3f, 0.0f
     };
 
-    sendTriangleToBuffer(triangle1, VAOs[0], VAOs[0]);
-    sendTriangleToBuffer(triangle2, VAOs[1], VAOs[1]);
+    sendTriangleToBuffer(triangle1, VAOs[0], VBOs[0]);
+    sendTriangleToBuffer(triangle2, VAOs[1], VBOs[1]);
 
-    unsigned int shaderProgram;
-    compileShaders(shaderProgram);
+    unsigned int shaderProgram1;
+    unsigned int shaderProgram2;
+    compileShaders(shaderProgram1, fragmentShaderOrange);
+    compileShaders(shaderProgram2, fragmentShaderOrangeDark);
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -53,8 +55,8 @@ int main() {
         glClearColor(0.38f, 0.16f, 0.51f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        drawTriangle(shaderProgram, VAOs[0]);
-        drawTriangle(shaderProgram, VAOs[1]);
+        drawTriangle(shaderProgram1, VAOs[0]);
+        drawTriangle(shaderProgram2, VAOs[1]);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -62,7 +64,8 @@ int main() {
 
     glDeleteVertexArrays(2, VAOs);
     glDeleteBuffers(2, VBOs);
-    glDeleteProgram(shaderProgram);
+    glDeleteProgram(shaderProgram1);
+    glDeleteProgram(shaderProgram2);
 
     glfwTerminate();
     return 0;
@@ -88,7 +91,7 @@ void processInputEscape(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
 }
 
-void compileShaders(unsigned int &shaderProgram) {
+void compileShaders(unsigned int &shaderProgram, const char *shaderSource) {
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
     glCompileShader(vertexShader);
@@ -104,7 +107,7 @@ void compileShaders(unsigned int &shaderProgram) {
     }
 
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
+    glShaderSource(fragmentShader, 1, &shaderSource, nullptr);
     glCompileShader(fragmentShader);
     glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
     if (!success)

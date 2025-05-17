@@ -14,17 +14,24 @@ inline const char *vertexShaderSource = "#version 330 core\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
     "}\0";
 
-inline const char *fragmentShaderSource = "#version 330 core\n"
+inline const char *fragmentShaderOrange = "#version 330 core\n"
    "out vec4 FragColor;\n"
    "void main()\n"
    "{\n"
    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
    "}\n\0";
 
+inline const char *fragmentShaderOrangeDark = "#version 330 core\n"
+   "out vec4 FragColor;\n"
+   "void main()\n"
+   "{\n"
+   "   FragColor = vec4(0.5f, 0.2f, 0.1f, 1.0f);\n"
+   "}\n\0";
+
 void configGLFW();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInputEscape(GLFWwindow *window);
-void compileShaders(unsigned int &shaderProgram);
+void compileShaders(unsigned int &shaderProgram, const char *shaderSource);
 
 void sendTriangleToBuffer(const float* vertices, unsigned int VAO, unsigned int VBO);
 void drawTriangle(unsigned int shader, unsigned int VAO);
