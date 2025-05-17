@@ -25,3 +25,6 @@ void configGLFW();
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInputEscape(GLFWwindow *window);
 void compileShaders(unsigned int &shaderProgram);
+
+void sendTriangleToBuffer(const float* vertices, unsigned int VAO, unsigned int VBO);
+void drawTriangle(unsigned int shader, unsigned int VAO);
