@@ -53,9 +53,6 @@ int main() {
         glClearColor(0.38f, 0.16f, 0.51f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        float offset = 1.0f;
-        ourShader.setFloat("offsetX", offset);
-
         ourShader.use();
 
         glBindVertexArray(VAO);
